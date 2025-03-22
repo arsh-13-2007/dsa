@@ -48,5 +48,5 @@ int main()
     }
     head = temp;
 
-    traverse(head);
+    traverse(head); 
 }
