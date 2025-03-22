@@ -28,8 +28,6 @@ struct node *insert_end(struct node *head, int data)
 int main()
 {
     int data;
-    // printf("enter number you want to add : ");
-    // scanf("%d", &data);
     struct node *head = NULL;
     struct node *ptr;
     head = (struct node *)malloc(sizeof(struct node));
