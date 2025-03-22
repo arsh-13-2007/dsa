@@ -45,7 +45,7 @@ int main()
     scanf("%d", &pos);
     ptr = head;
     int i = 1;
-    while (i <= pos)
+    while (i < pos)
     {
         ptr = ptr->next;
         i++;

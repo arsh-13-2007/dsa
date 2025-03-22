@@ -5,22 +5,26 @@ struct node
     int data;
     struct node *next;
 };
-void traverse(struct node *ptr)
+int search(struct node *ptr)
 {
+    int num;
+    printf("Enter the number you want to search: ");
+    scanf("%d", &num);
+    int node = 1;
     while (ptr != NULL)
     {
-        printf("%d\n", ptr->data);
-        ptr = ptr->next;
+        if (ptr->data == num)
+        {
+            printf("Number %d is found at node %d\n", num, node);
+            return 0;
+        }
+        else
+        {
+            ptr = ptr->next;
+            node++;
+        }
     }
-}
-
-void deletion_end(struct node *ptr)
-{
-    while (ptr->next->next != NULL)
-    {
-        ptr = ptr->next;
-    }
-    ptr->next = NULL;
+    return 1;
 }
 int main()
 {
@@ -41,8 +45,14 @@ int main()
     temp->data = 40;
     temp->next = NULL;
     head->next->next->next = temp;
+    temp = (struct node *)malloc(sizeof(struct node));
+    temp->data = 50;
+    temp->next = NULL;
+    head->next->next->next->next = temp;
     ptr = head;
-    deletion_end(ptr);
-    ptr = head;
-    traverse(ptr);
+    int n = search(ptr);
+    if (n == 1)
+    {
+        printf("Number not found in linked list\n");
+    }
 }

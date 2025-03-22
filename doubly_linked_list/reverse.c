@@ -15,14 +15,16 @@ void traverse(struct node *head)
         temp = temp->next;
     }
 }
-struct node *deletion_beg(struct node *head)
+struct node *reverse(struct node *head)
 {
-    struct node *temp = head->next;
-    temp->prev = NULL;
-    head->next = NULL;
-    free(head);
-    head = temp;
-    return head;
+    struct node *temp = head->prev;
+    head->prev = head->next;
+    head->next = temp;
+
+    if (head->prev == NULL)
+        return head;
+
+    return reverse(head->prev);
 }
 int main()
 {
@@ -47,11 +49,8 @@ int main()
     ptr->next = NULL;
     ptr->prev = head->next->next;
     head->next->next->next = ptr;
-    ptr = (struct node *)malloc(sizeof(struct node));
-    ptr->data = 50;
-    ptr->next = NULL;
-    ptr->prev = head->next->next->next;
-    head->next->next->next->next = ptr;
-    head = deletion_beg(head);
+    traverse(head);
+    head = reverse(head);
+    printf("\nafter the reverse the linked list :\n");
     traverse(head);
 }
