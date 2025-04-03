@@ -11,7 +11,7 @@ void push(int data)
     struct node *ptr;
     ptr = (struct node *)malloc(sizeof(struct node));
     ptr->data = data;
-    ptr->next = top;
+    ptr->link = top;
     top = ptr;
 }
 void pop()
@@ -25,7 +25,9 @@ void pop()
     else
     {
         printf("%d", top->data);
-        top = top->next;
+
+
+        top = top->link;
         free(ptr);
     }
 }
