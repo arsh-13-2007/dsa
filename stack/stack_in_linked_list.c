@@ -1,37 +1,52 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 struct node
 {
     int data;
     struct node *link;
-};
+} ;
 struct node *top = 0;
-void push(int data)
+
+void push()
 {
     struct node *ptr;
     ptr = (struct node *)malloc(sizeof(struct node));
-    ptr->data = data;
+    printf("Enter the value of the node: ");
+    scanf("%d", &ptr->data);
     ptr->link = top;
     top = ptr;
 }
 void pop()
 {
-    struct node *ptr;
-    ptr = top;
     if (top == 0)
     {
-        printf("Stack is empty\n");
+        printf("Stack is empty");
+        return;
     }
-    else
+    struct node *ptr;
+    ptr = top;
+    printf("%d\n", top->data);
+    top = top->link;
+    free(ptr);
+}
+void display()
+{
+    struct node *ptr;
+    ptr = top;
+    while (ptr != 0)
     {
-        printf("%d", top->data);
-
-
-        top = top->link;
-        free(ptr);
+        printf("%d\n", ptr->data);
+        ptr = ptr->link;
     }
 }
-int main (){
-    push(1);
-    push(2);
+int main()
+{
+    push();
+    push();
+    push();
+    push();
+    pop();
+    pop();
+    push();
+    display();
 }

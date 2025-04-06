@@ -19,7 +19,6 @@ void push()
         stack[top] = x;
     }
 }
-
 void pop()
 {
     if (top == -1)
@@ -47,7 +46,6 @@ void display()
         }
     }
 }
-
 int main()
 {
         int choice;
