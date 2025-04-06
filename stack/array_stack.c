@@ -1,8 +1,14 @@
 #include <stdio.h>
-int stack[5];
+#define N 5;
+
 int top = -1;
-void push(int data)
+int stack[5];
+
+void push()
 {
+    int x;
+    printf("Enter a number: ");
+    scanf("%d", &x);
     if (top == 4)
     {
         printf("Stack is full\n");
@@ -10,56 +16,62 @@ void push(int data)
     else
     {
         top = top + 1;
-        stack[top] = data;
+        stack[top] = x;
     }
 }
+
 void pop()
 {
-    push(2);
-    push(3);
-    push(4);
-    push(5);
-    push(6);
     if (top == -1)
     {
-        printf("undeerflow condition\n");2
+        printf("Stack is empty\n");
     }
     else
     {
-        printf("%d",stack[top]) ; 
+        printf("Popped element is: %d\n", stack[top]);
         top = top - 1;
     }
 }
 void display()
 {
-    for (int i = 4; i <= 0; i--)
+    if (top == -1)
     {
-        printf("%d\n", stack[i]);
+        printf("Stack is empty\n");
+    }
+    else
+    {
+
+        for (int i = top; i >= 0; i--)
+        {
+            printf("%d\n", stack[i]);
+        }
     }
 }
+
 int main()
 {
-    int data;
-    int choice;
-    printf("enter choice  1. push 2. pop 3. display ");
-    scanf("%d", &choice);
-
-    switch (choice)
+        int choice;
+    do
     {
-    case 1:
-
-        printf("enter data: ");
-        scanf("%d", &data);
-        push(data);
-        break;
-    case 2:
-        pop();
-        break;
-    case 3:
-        display();
-        break;
-    default:
-        printf("invalid choice");
-        break;
-    }
+        printf("enter choice  0.exists 1. push  2.pop  3. display ");
+        scanf("%d", &choice);
+        switch (choice)
+        {
+        case 1:
+            push();
+            break;
+        case 2:
+            pop();
+            break;
+        case 3:
+            display();
+            break;
+        case 0:
+            printf("exists !!!!");
+            break;
+        default:
+            printf("invalid choice");
+        }
+    } while (choice != 0);
+    return 0;
 }
