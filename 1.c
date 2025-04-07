@@ -1,52 +1,27 @@
-#include <stdio.h>
-#include <stdlib.h>
-struct node
-{
+#include<stdio.h>
+#include<stdlib.h>
+struct node(){
     int data;
-    struct node *link;
-} ;
-struct node *top = 0;
+    struct node* next;
+};
+struct node*front = 0 ;
+struct node*rear = 0 ;
 
-void push()
-{
-    struct node *ptr;
-    ptr = (struct node *)malloc(sizeof(struct node));
-    printf("Enter the value of the node: ");
-    scanf("%d", &ptr->data);
-    ptr->link = top;
-    top = ptr;
-}
-void pop()
-{
-    if (top == 0)
-    {
-        printf("Stack is empty");
-        return;
+void enqueue(){
+    struct node* temp = (struct node*)malloc(sizeof(struct node));
+    int data ; 
+    printf("Enter the data to be inserted: ");
+    scanf("%d",&data);
+    temp -> data = data ; 
+    temp -> next = NULL ; 
+    if(front ==  0 && rear == 0 ){
+        front = rear = temp ;
     }
-    struct node *ptr;
-    ptr = top;
-    printf("%d\n", top->data);
-    top = top->link;
-    free(ptr);
-}
-void display()
-{
-    struct node *ptr;
-    ptr = top;
-    while (ptr != 0)
-    {
-        printf("%d\n", ptr->data);
-        ptr = ptr->link;
+    else {
+        rear ->next = temp ; 
+        rear = temp ;
     }
 }
-int main()
-{
-    push();
-    push();
-    push();
-    push();
-    pop();
-    pop();
-    push();
-    display();
+void dequeue(){
+    if ( rear == 0 && )
 }

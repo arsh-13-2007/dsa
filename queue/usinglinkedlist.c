@@ -33,9 +33,7 @@ void dequeue() {
         struct node *temp = front;
         front = front->next;
         free(temp);
-        if (front == 0) { 
-            rear = 0;
-        }
+       
     }
 }
 
