@@ -6,8 +6,7 @@ struct node
     int data;
     struct node *next;
 };
-void traverse(
-    struct node *head)
+void traverse(struct node *head)
 {
     struct node *ptr;
     ptr = head;
@@ -20,7 +19,7 @@ void traverse(
 
 int main()
 {
-    struct node *head = NULL;
+    struct node *head;
     head = (struct node *)malloc(sizeof(struct node));
     head->data = 10;
     head->next = NULL;
