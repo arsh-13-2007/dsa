@@ -42,13 +42,11 @@ void dequeue()
     else
     {
         printf("Deleted element: %d\n", front->data);
-
         front = front->next;
         rear->next = front;
         free(temp);
     }
 }
-
 void display()
 {
     struct node *temp = front;
@@ -68,7 +66,6 @@ void display()
 }
 int main()
 {
-    enqueue();
     enqueue();
     enqueue();
     enqueue();
