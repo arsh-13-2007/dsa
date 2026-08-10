@@ -1,67 +1,35 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 int main()
 {
-    int n;
-    cout << "Enter size of array: ";
-    cin >> n;
-    int bit_num[100];
-    int stuffed[200];
-    int destuffed[200];
-    cout << "Enter bits (0/1): ";
-    for (int i = 0; i < n; i++)
-    {
-        cin >> bit_num[i];
-    } // ---------------- BIT STUFFING ----------------
-    int j = 0;
-    for (int i = 0; i < n; i++)
-    {
-        stuffed[j++] = bit_num[i];
 
-        if (i >= 5)
+    vector<int> nums = {1, 2, 2, 3, 4, 4, 4, 5, 5, 5, 6};
+    vector<int> count;
+
+    int freq = 1;
+
+    for (int i = 0; i < nums.size() - 1; i++)
+    {
+        if (nums[i] == nums[i + 1])
         {
-            if (bit_num[i - 5] == 0 &&
-                bit_num[i - 4] == 1 &&
-                bit_num[i - 3] == 1 &&
-                bit_num[i - 2] == 1 &&
-                bit_num[i - 1] == 1 &&
-                bit_num[i] == 1)
-            {
-                stuffed[j++] = 0;
-            }
+            freq++;
+        }
+        else
+        {
+            count.push_back(freq);
+            freq = 1;
         }
     }
-    cout << "\nAfter Bit Stuffing: ";
-    for (int i = 0; i < j; i++)
-    {
-        cout << stuffed[i];
+
+    count.push_back(freq);
+    for( int i = 0 ; i < count.size() ; i++){
+        cout<<count[i]<<" " ; 
     }
 
-    // ---------------- DE-STUFFING ----------------
-    int k = 0;
-    for (int i = 0; i < j; i++)
-    {
 
-        if (i >= 6 &&
-            stuffed[i - 6] == 0 &&
-            stuffed[i - 5] == 1 &&
-            stuffed[i - 4] == 1 &&
-            stuffed[i - 3] == 1 &&
-            stuffed[i - 2] == 1 &&
-            stuffed[i - 1] == 1 &&
-            stuffed[i] == 0)
-        {
-            continue;
-        }
-
-        destuffed[k++] = stuffed[i];
+    for( int i = 0 ; i < nums.size() ; i++){
+        for( int j = i ; j 
+        )
     }
-
-    cout << "\nAfter De-Stuffing: ";
-    for (int i = 0; i < k; i++)
-    {
-        cout << destuffed[i];
-    }
-
-    return 0;
 }

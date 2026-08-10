@@ -44,7 +44,7 @@ int main(){
 
    
    cout<<"updated array is :" ; 
-   for( int i =1  ; i <= arr.size(); i++){
+   for( int i =1  ; i < arr.size() ; i++){
     cout<<arr[i]<<" " ; 
    } 
 
